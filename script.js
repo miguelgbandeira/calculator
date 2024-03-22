@@ -3,6 +3,7 @@ const displayButtons = document.querySelectorAll(
 );
 
 const equalButton = document.querySelector(".equal");
+const clearButton = document.querySelector(".clear");
 
 const display = document.querySelector(".display");
 let displayValue = "";
@@ -20,7 +21,11 @@ equalButton.addEventListener("click", () => {
   const [n1, operator, n2] = displayValue.split(/([+\-x/])/);
   const number1 = parseFloat(n1);
   const number2 = parseFloat(n2);
-  console.log(operate(operator, number1, number2));
+  display.textContent = operate(operator, number1, number2);
+});
+
+clearButton.addEventListener("click", () => {
+  display.textContent = "";
   displayValue = "";
 });
 
