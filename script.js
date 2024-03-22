@@ -1,3 +1,19 @@
+const numberButton = document.querySelectorAll(
+  "button:not(.clear):not(.equal)"
+);
+
+const display = document.querySelector(".display");
+let displayValue = "";
+
+numberButton.forEach((button) => {
+  button.addEventListener("click", () => {
+    display.textContent = "";
+    displayValue += button.textContent;
+    display.textContent = button.textContent;
+    console.log(displayValue);
+  });
+});
+
 function add(a, b) {
   return a + b;
 }
