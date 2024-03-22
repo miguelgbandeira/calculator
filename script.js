@@ -1,17 +1,27 @@
-const numberButton = document.querySelectorAll(
+const displayButtons = document.querySelectorAll(
   "button:not(.clear):not(.equal)"
 );
+
+const equalButton = document.querySelector(".equal");
 
 const display = document.querySelector(".display");
 let displayValue = "";
 
-numberButton.forEach((button) => {
+displayButtons.forEach((button) => {
   button.addEventListener("click", () => {
     display.textContent = "";
     displayValue += button.textContent;
     display.textContent = button.textContent;
     console.log(displayValue);
   });
+});
+
+equalButton.addEventListener("click", () => {
+  const [n1, operator, n2] = displayValue.split(/([+\-x/])/);
+  const number1 = parseFloat(n1);
+  const number2 = parseFloat(n2);
+  console.log(operate(operator, number1, number2));
+  displayValue = "";
 });
 
 function add(a, b) {
