@@ -1,0 +1,46 @@
+body {
+  padding: 0;
+  margin: 0;
+}
+.calculator {
+  display: flex;
+  flex-direction: column;
+  border: 3px solid orange;
+  width: 500px;
+}
+
+.display {
+  border: 3px solid black;
+  display: flex;
+  justify-content: end;
+  height: 50px;
+  font-size: 40px;
+}
+
+button {
+  font-size: 30px;
+  padding: 40px;
+}
+
+.buttons {
+  display: flex;
+}
+
+.numbers-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.numbers-container > .numbers {
+  flex: 1;
+}
+
+.operators-container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.operators-container > .operators {
+  flex: 1;
+}
