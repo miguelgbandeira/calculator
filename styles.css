@@ -86,9 +86,6 @@ button {
   gap: 10px;
 }
 
-.footer img {
-  width: 25px;
-  height: auto;
-  margin-right: 10px;
-  filter: invert(100%);
+#github-icon {
+  color: #efd6ac;
 }
