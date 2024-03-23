@@ -10,6 +10,7 @@ const display = document.querySelector(".display");
 let number1 = "";
 let number2 = "";
 let operator = "";
+let hasDot = false;
 
 // Function to handle key press events
 function handleKeyPress(key) {
@@ -42,7 +43,7 @@ document.addEventListener("keydown", (e) => {
   // Check if the pressed key is alphanumeric, an operator, or Enter key
   if (
     (e.key >= "0" && e.key <= "9") ||
-    ["+", "-", "x", "/", "Enter", "=", "Escape"].includes(e.key)
+    ["+", "-", "x", "/", "Enter", "=", "Escape", ".", "Shift"].includes(e.key)
   ) {
     handleKeyPress(e.key);
   } else {
@@ -55,6 +56,9 @@ document.addEventListener("keydown", (e) => {
 displayButtons.forEach((button) => {
   button.addEventListener("click", () => {
     if (button.classList.contains("number")) {
+      if (button.textContent == "." && display.textContent.includes(".")) {
+        return;
+      }
       if (number2 === "" && operator === "") {
         number1 += button.textContent;
         display.textContent = number1;
@@ -124,6 +128,9 @@ function operate(operator, firstNumber, secondNumber) {
   } else if (operator == "x") {
     return multiply(firstNumber, secondNumber);
   } else if (operator == "/") {
+    if (secondNumber == 0) {
+      return "ERROR";
+    }
     return divide(firstNumber, secondNumber);
   }
 }
