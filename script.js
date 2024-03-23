@@ -2,6 +2,7 @@ const displayButtons = document.querySelectorAll(
   "button:not(#clear):not(.equal)"
 );
 
+const operatorButtons = document.querySelectorAll(".operator");
 const equalButton = document.querySelector(".equal");
 const clearButton = document.querySelector("#clear");
 
