@@ -1,9 +1,9 @@
 const displayButtons = document.querySelectorAll(
-  "button:not(.clear):not(.equal)"
+  "button:not(#clear):not(.equal)"
 );
 
 const equalButton = document.querySelector(".equal");
-const clearButton = document.querySelector(".clear");
+const clearButton = document.querySelector("#clear");
 
 const display = document.querySelector(".display");
 let displayValue = "";
