@@ -14,8 +14,7 @@ let hasDot = false;
 
 // Function to handle key press events
 function handleKeyPress(key) {
-  // Check if the pressed key is a number
-  if (!isNaN(parseInt(key))) {
+  if (!isNaN(parseInt(key)) || key == ".") {
     if (number2 === "" && operator === "") {
       number1 += key;
       display.textContent = number1;
@@ -83,7 +82,7 @@ equalButton.addEventListener("click", () => {
 });
 
 clearButton.addEventListener("click", () => {
-  reset()();
+  reset();
 });
 
 function reset() {
