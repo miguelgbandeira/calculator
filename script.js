@@ -7,28 +7,53 @@ const equalButton = document.querySelector(".equal");
 const clearButton = document.querySelector("#clear");
 
 const display = document.querySelector(".display");
-let displayValue = "";
+let number1 = "";
+let number2 = "";
+let operator = "";
 
 displayButtons.forEach((button) => {
   button.addEventListener("click", () => {
-    display.textContent = "";
-    displayValue += button.textContent;
-    display.textContent = button.textContent;
-    console.log(displayValue);
+    if (button.className == "number") {
+      if (number2 == "" && operator == "") {
+        number1 += button.textContent;
+        display.textContent = number1;
+      } else if (number1 != "" && operator != "") {
+        number2 += button.textContent;
+        display.textContent = number2;
+      }
+    } else if (button.className == "operator") {
+      if (operator == "") {
+        operator = button.textContent;
+        display.textContent = operator;
+      } else {
+        equalFunction();
+        operator = button.textContent;
+      }
+    }
   });
 });
 
 equalButton.addEventListener("click", () => {
-  const [n1, operator, n2] = displayValue.split(/([+\-x/])/);
-  const number1 = parseFloat(n1);
-  const number2 = parseFloat(n2);
-  display.textContent = operate(operator, number1, number2);
+  equalFunction();
 });
 
 clearButton.addEventListener("click", () => {
   display.textContent = "";
-  displayValue = "";
+  number1 = "";
+  number2 = "";
+  operator = "";
 });
+
+function equalFunction() {
+  display.textContent = operate(
+    operator,
+    parseFloat(number1),
+    parseFloat(number2)
+  );
+  number1 = display.textContent;
+  operator = "";
+  number2 = "";
+}
 
 function add(a, b) {
   return a + b;
@@ -57,5 +82,3 @@ function operate(operator, firstNumber, secondNumber) {
     return divide(firstNumber, secondNumber);
   }
 }
-
-console.log(operate("+", 2, 10));
